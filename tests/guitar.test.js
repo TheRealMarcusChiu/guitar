@@ -23,3 +23,14 @@ test("the page and package are named Guitar", async () => {
   assert.doesNotMatch(html, /Afterimage/);
   assert.equal(JSON.parse(await read("../package.json")).name, "guitar");
 });
+
+test("the name, file name and chooser sit at the foot of the play bar, leaving the art clear", async () => {
+  const html = String(await read("../index.html"));
+  const strip = html.indexOf('class="strip"');
+  const marks = ['id="canvas-wrap"', 'class="strip"', 'id="play"', 'id="status"', "<h1>", 'id="note-title"', 'id="choose"', 'id="file"', 'id="note-privacy"', 'class="about"'];
+  const places = marks.map((mark) => html.indexOf(mark));
+  assert.ok(places.every((place) => place !== -1));
+  assert.deepEqual(places, [...places].sort((a, b) => a - b));
+  assert.equal(html.indexOf("<h1>", strip), html.lastIndexOf("<h1>"), "one heading, moved rather than copied");
+  assert.doesNotMatch(html, /masthead/);
+});

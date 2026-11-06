@@ -14,20 +14,7 @@
 </head>
 <body data-state="empty">
   <div class="first-screen">
-    <header class="masthead">
-      <h1>Guitar</h1>
-    </header>
-
     <main class="stage">
-      <section class="note" aria-label="Recording">
-        <div class="note-text">
-          <p class="note-title" id="note-title">No recording loaded yet.</p>
-          <p class="note-privacy" id="note-privacy">Your file stays in this browser. Nothing is uploaded.</p>
-        </div>
-        <button type="button" class="choose" id="choose">Choose recording</button>
-        <input type="file" id="file" accept="video/*,audio/*,.mp4,.m4v,.m4a,.mov,.webm" hidden>
-      </section>
-
       <div class="canvas-wrap" id="canvas-wrap">
         <video id="video" playsinline webkit-playsinline preload="metadata" crossorigin="anonymous" aria-hidden="true" tabindex="-1"></video>
         <canvas id="art" role="img" aria-label="A fine ivory string crosses the frame on a diagonal. A sheet of ochre silk hangs beneath it and twists into two folds. The form holds still until a recording plays, then moves with its sound."></canvas>
@@ -51,6 +38,13 @@
         <p class="status" id="status" role="status" aria-live="polite"></p>
         <button type="button" class="retry" id="retry" hidden>Try again</button>
       </div>
+      <section class="note" aria-label="Recording">
+        <h1>Guitar</h1>
+        <p class="note-title" id="note-title">No recording loaded yet.</p>
+        <button type="button" class="choose" id="choose">Choose recording</button>
+        <input type="file" id="file" accept="video/*,audio/*,.mp4,.m4v,.m4a,.mov,.webm" hidden>
+        <p class="note-privacy" id="note-privacy">Your file stays in this browser. Nothing is uploaded.</p>
+      </section>
     </section>
   </div>
 
