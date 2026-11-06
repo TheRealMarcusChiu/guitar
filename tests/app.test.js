@@ -1,6 +1,13 @@
 // Drives the real app.js through a small DOM stand-in. Proves wiring and ordering, not rendering.
 import test from "node:test";
 import assert from "node:assert/strict";
+import { registerHooks } from "node:module";
+
+// These tests start from the empty state and the chooser, whatever track config.js publishes.
+registerHooks({
+  load: (url, context, next) =>
+    url.endsWith("/config.js") ? { format: "module", shortCircuit: true, source: 'export const MEDIA_SOURCE = "";' } : next(url, context),
+});
 
 class FakeElement extends EventTarget {
   constructor(id) {
